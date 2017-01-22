@@ -115,12 +115,15 @@ function buildAndShowHomeHTML (categories) {
       // $dc.loadMenuItems('L')
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
-      
-      var name = "" + chosenCategoryShortName.name;
-      console.log(name)
-      var short_name = chosenCategoryShortName.short_name;
-      console.log(short_name)
-      dc.loadMenuItems(short_name)
+
+      finalHtml = "<section class='row'>";
+      html =
+        insertProperty(homeHtml,
+                     "randomCategoryShortName",
+                     "'" + chosenCategoryShortName.short_name + "'");
+      finalHtml += html;
+      finalHtml += "</section>";
+      insertHtml("#main-content", finalHtml);     
    },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
@@ -149,6 +152,7 @@ dc.loadMenuCategories = function () {
 // 'categoryShort' is a short_name for a category
 dc.loadMenuItems = function (categoryShort) {
   showLoading("#main-content");
+  console.log(menuItemsUrl + categoryShort )
   $ajaxUtils.sendGetRequest(
     menuItemsUrl + categoryShort,
     buildAndShowMenuItemsHTML);
