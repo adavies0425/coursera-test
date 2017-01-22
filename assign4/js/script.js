@@ -115,8 +115,7 @@ function buildAndShowHomeHTML (categories) {
       // $dc.loadMenuItems('L')
       // Hint: you need to surround the chosen category short name with something before inserting
       // it into the home html snippet.
-      var finalHtml = categoryHtml;
-      finalHtml += "<section class='row'>";
+      
       var name = "" + chosenCategoryShortName.name;
       console.log(name)
       var short_name = chosenCategoryShortName.short_name;
